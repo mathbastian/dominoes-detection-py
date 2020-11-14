@@ -1,0 +1,6 @@
+{
+    "python.pythonPath": "C:\\Users\\bastian\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe",
+    "python.linting.pylintEnabled": false,
+    "python.linting.mypyEnabled": true,
+    "python.linting.enabled": true
+}

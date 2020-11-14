@@ -1,0 +1,5 @@
+https://stackoverflow.com/questions/43841210/how-to-detect-circle-in-a-binary-image/43844556
+
+https://pythonprogramming.net/loading-images-python-opencv-tutorial/
+
+https://docs.opencv.org/master/d6/d6e/group__imgproc__draw.html#gaf10604b069374903dbd0f0488cb43670
