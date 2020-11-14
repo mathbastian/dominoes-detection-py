@@ -14,10 +14,11 @@ def print_results(area, count_of_edges_above, count_of_edges_below):
 AREA_OF_SQUARE = 106.0
 AREA_OF_CIRCLE = 28.0
 
-img_color = cv2.imread('Domino6.png')
+# Change image here
+img_color = cv2.imread('Domino3.png')
 
 # Get height of image (to know if edges are above or below)
-max_height, width, channels = img_color.shape
+height, width, channels = img_color.shape
 
 # Apply filters
 img_gray = cv2.cvtColor(img_color, cv2.COLOR_BGR2GRAY)
@@ -30,11 +31,8 @@ sharpen = cv2.filter2D(img_gray, -1, sharpen_kernel)
 # Change colors from black to white and vice versa
 thresh = cv2.threshold(sharpen,160,255, cv2.THRESH_BINARY_INV)[1]
 
-kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3,3))
-close = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel, iterations=2)
-
 # Detect edges
-countours = cv2.findContours(close, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+countours = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 countours = countours[0] if len(countours) == 2 else countours[1]
 
 count_of_edges_above = 0
@@ -44,7 +42,7 @@ for countour in countours:
     area = cv2.contourArea(countour)
     x,y,w,h = cv2.boundingRect(countour)
     # Detect if above or below center
-    if y < max_height/2:
+    if y < height/2:
         count_of_edges_above = count_of_edges_above + 1
     else:
         count_of_edges_below = count_of_edges_below + 1
